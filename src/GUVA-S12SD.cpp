@@ -6,59 +6,51 @@ GUVA_S12SD::GUVA_S12SD( int pin ){
 int GUVA_S12SD::getUVIntensity(){
 
     int ADC_VALUE = analogRead(pin__);
-    int voltage_value = (ADC_VALUE * 3.3 ) / (4095);
+    float voltage_value = (ADC_VALUE * 3.3 ) / (4095);
     int UV_index=0;
-    if (voltage_value > 0 && voltage_value < 50)
+    if (voltage_value < 0.1)
     {
         UV_index = 0;
     }
-    else if (voltage_value > 50 && voltage_value <= 227)
-    {
-        UV_index = 0;
-    }
-    else if (voltage_value > 227 && voltage_value <= 318)
+    else if (voltage_value <= 0.2)
     {
         UV_index = 1;
     }
-    else if (voltage_value > 318 && voltage_value <= 408)
+    else if (voltage_value <= 0.3)
     {
         UV_index = 2;
     }
-    else if (voltage_value > 408 && voltage_value <= 503)
+    else if (voltage_value <= 0.4)
     {
         UV_index = 3;
     }
-    else if (voltage_value > 503 && voltage_value <= 606)
+    else if (voltage_value <= 0.5)
     {
         UV_index = 4;
     }
-    else if (voltage_value > 606 && voltage_value <= 696)
+    else if (voltage_value <= 0.6)
     {
         UV_index = 5;
     }
-    else if (voltage_value > 696 && voltage_value <= 795)
+    else if (voltage_value <= 0.7)
     {
         UV_index = 6;
     }
-    else if (voltage_value > 795 && voltage_value <= 881)
+    else if (voltage_value <= 0.8)
     {
         UV_index = 7;
     }
-    else if (voltage_value > 881 && voltage_value <= 976)
+    else if (voltage_value <= 0.9)
     {
         UV_index = 8;
     }
-    else if (voltage_value > 976 && voltage_value <= 1079)
+    else if (voltage_value <= 1)
     {
         UV_index = 9;
     }
-    else if (voltage_value > 1079 && voltage_value <= 1170)
+    else if (voltage_value <= 1.1)
     {
         UV_index = 10;
-    }
-    else if (voltage_value > 1170)
-    {
-        UV_index = 11;
     }
     return UV_index;
 };
